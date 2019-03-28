@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'LoteamentoBemViver.core',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +54,9 @@ ROOT_URLCONF = 'LoteamentoBemViver.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +69,9 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(__file__), 'template').replace('\\','/'),
+)
 
 WSGI_APPLICATION = 'LoteamentoBemViver.wsgi.application'
 
@@ -121,4 +125,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = "core.MyUser"
+LOGIN_REDIRECT_URL = '/'
+
